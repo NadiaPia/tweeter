@@ -1,0 +1,45 @@
+
+.new-tweet {
+  display: flex;
+  flex-direction: column;
+  align-content: center; 
+  
+}
+
+.post-tweet {
+  display: flex;
+  flex-direction: column;  
+}
+
+#question {
+  font: bold;
+}
+
+#tweet-text {
+  border: none;
+  outline: none;
+  background-color: #f4f1ec;
+  resize: none;
+  border-bottom: 3px solid;
+  height: 45px;
+  font-size: large;
+}
+
+.result {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 20px;
+  font-family: "Bungee", "sans-serif";
+}
+
+#tweet-button {
+  background-color: #4056A1;  
+  color: #FFFFFF;
+}
+
+
+
+
+
+

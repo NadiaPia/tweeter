@@ -1,0 +1,16 @@
+.nav-header {
+  height: 520px;
+  width: 100%;
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center;
+  background-color: #adc113;  
+  background-image: url("https://www.transparenttextures.com/patterns/binding-light.png");
+/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */ 
+}
+
+.name h2 {
+  margin: 0;
+}
