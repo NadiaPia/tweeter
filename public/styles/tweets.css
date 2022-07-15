@@ -1,4 +1,4 @@
-.tweet-container {
+.tweet{
   border-width: 3px;
   border-style: solid;  
   padding: 20px;
@@ -6,7 +6,7 @@
   border-color: grey;  
 }
 
-.tweet-container:hover {
+.tweet:hover {
   box-shadow: 10px 10px 8px #888888;
 }
 
@@ -24,6 +24,10 @@
 .tweet-header > p  {
   font-weight: bold;
   color:rgb(143, 195, 197);
+}
+
+.emoji {
+  margin-right: 15px;
 }
 
 .tweet-footer {
