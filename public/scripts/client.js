@@ -35,34 +35,16 @@ const createTweetElement = function(tweetData) {
   </article>`);
   
 };
-/*const tweetData = {
-  "user": {
-    "name": "Newton",
-    "avatars": "https://i.imgur.com/73hZDYK.png",
-      "handle": "@SirIsaac"
-    },
-  "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-  "created_at": 1461116232227
-}*/
-/*const $tweet = createTweetElement(tweetData);*/
-
-
 const renderTweets = function(data) {
   for (let tweetData of data) {
     const $tweet = createTweetElement(tweetData);
-    $('#tweets-container').append($tweet);
+    $('#tweets-container').prepend($tweet);
   }
 
 };
 
 $(document).ready(function() {
-  
-  
-  //const $button = $("#tweet-button")
-  //$button.on("click", function(event) {}
-
+ 
   //Send POST request to the server 
 
   const $form = $(".post-tweet");
@@ -74,24 +56,40 @@ $(document).ready(function() {
     const tweet = $(this).serialize()
     if (tweet_length > 140) {
       alert("Your tweet is more then 140 symbols");
-      return
+      return;
     }
 
     if (tweet_length === 0) {
       alert("Your tweet is empty");
-      return
+      return;
     }
     
     $.ajax("/tweets", { method: 'POST', data: tweet })
-    .then(res => console.log(tweet))
+      .then(res => {
+        console.log(tweet);
+        $("#tweet-text").val("")        
+        $.ajax("/tweets", {method: "GET"})
+    
+    .then(res => {
+      renderTweets([res.pop()])
+    })
+        
+      })    
     
   })
 
   const loadTweets = function() {
     $.ajax("/tweets", {method: "GET"})
-    .then(res => renderTweets(res))
+    
+    .then(res => {
+      console.log(res)
+      renderTweets(res)
+    })
     
   }
+
+
+  
   console.log(loadTweets())
   
 });
