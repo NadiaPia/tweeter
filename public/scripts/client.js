@@ -22,7 +22,7 @@ const createTweetElement = function(tweetData) {
     </body>
 
     <footer class="tweet-footer">
-      <p>${tweetData.created_at}</p>
+      <p>${timeago.format(tweetData.created_at)}</p>
       <div class="aricle-icons">
         <i class="fa-solid fa-flag"></i>
         <i class="fa-solid fa-retweet"></i>
@@ -49,32 +49,6 @@ const createTweetElement = function(tweetData) {
 /*const $tweet = createTweetElement(tweetData);*/
 
 
-const data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png"
-      ,
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd" },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  }
-];
-
-
 const renderTweets = function(data) {
   for (let tweetData of data) {
     const $tweet = createTweetElement(tweetData);
@@ -84,11 +58,43 @@ const renderTweets = function(data) {
 };
 
 $(document).ready(function() {
+  
+  
+  //const $button = $("#tweet-button")
+  //$button.on("click", function(event) {}
 
-  renderTweets(data);
- 
+  //Send POST request to the server 
+
+  const $form = $(".post-tweet");
+
+  $form.on("submit", function(event) {
+    event.preventDefault();
+    const $textarea = $("#tweet-text");
+    let tweet_length = $textarea.val().length;
+    const tweet = $(this).serialize()
+    if (tweet_length > 140) {
+      alert("Your tweet is more then 140 symbols");
+      return
+    }
+
+    if (tweet_length === 0) {
+      alert("Your tweet is empty");
+      return
+    }
+    
+    $.ajax("/tweets", { method: 'POST', data: tweet })
+    .then(res => console.log(tweet))
+    
+  })
+
+  const loadTweets = function() {
+    $.ajax("/tweets", {method: "GET"})
+    .then(res => renderTweets(res))
+    
+  }
+  console.log(loadTweets())
+  
 });
-
 
 
 

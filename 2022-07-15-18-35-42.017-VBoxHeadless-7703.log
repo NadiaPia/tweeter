@@ -1,0 +1,12 @@
+Log created: 2022-07-15T18:35:42.172575000Z
+Process ID:  7703 (0x1e17)
+Parent PID:  2036 (0x7f4)
+Executable:  /usr/lib/virtualbox/VBoxHeadless
+Arg[0]: /usr/lib/virtualbox/VBoxHeadless
+Arg[1]: --comment
+Arg[2]: lighthouse_default_1649482135712_69956
+Arg[3]: --startvm
+Arg[4]: b393bd33-09a3-4191-b393-1de26aa13638
+Arg[5]: --vrde
+Arg[6]: config
+AddRef: illegal refcnt=3221225469 state=2
