@@ -38,6 +38,18 @@
   color: #FFFFFF;
 }
 
+.error-message-oversize, .error-message-empty  {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  display: none;
+
+}
+
 
 
 

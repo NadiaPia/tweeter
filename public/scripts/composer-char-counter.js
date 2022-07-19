@@ -3,7 +3,6 @@ $(document).ready(function() {
   const textarea = $("#tweet-text");
   
   textarea.on('input', function() {
-    console.log(typeof textarea.val().length)
     let remainder = 140 - $(this).val().length;
     const counter = $(this).parent().find(".counter") //this refers to the textarea
     counter.text(remainder);

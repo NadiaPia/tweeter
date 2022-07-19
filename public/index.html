@@ -60,9 +60,20 @@
     <main class="container">
       <section class="new-tweet">
         <h2>Compose Tweet</h2>
+        <div  class="error-message-oversize">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          <p> Great tweet, but it must be no more then 140 symbols!!!</p>
+        </div>
+
+        <div  class="error-message-empty">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          <p> Your tweet is empty!</p>
+        </div>
+        
         <form class="post-tweet" action="/tweets" method="POST">
           <label for="tweet-text"><strong>What are you humming about?</strong></label>
           <textarea name="text" id="tweet-text"></textarea>
+          
           <div class="result">            
               <button id="tweet-button" type="submit">Tweet</button>
               <output name="counter" class="counter" for="tweet-text">140</output>          

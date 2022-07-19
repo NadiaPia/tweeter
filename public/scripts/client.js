@@ -4,21 +4,24 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+const disarm = function(str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
+
 const createTweetElement = function(tweetData) {
   return $(`<article class="tweet">
     <header class="tweet-header">
       <div>
         <img class="emoji" src=${tweetData.user.avatars} alt="avatar"></img>
         <p>${tweetData.user.name}</p>
-      </div>            
+      </div>
       <p>${tweetData.user.handle}</p>
     </header>
 
-    <body class="tweet-body">
-      <form class="post-tweet" action="/tweets" method="POST">              
-        <textarea name="text" id="article-tweet-text">${tweetData.content.text}</textarea>              
-      </form>   
-
+    <body class="tweet-body">                   
+        <p id="article-tweet-text">${disarm(tweetData.content.text)}</p>
     </body>
 
     <footer class="tweet-footer">
@@ -33,66 +36,72 @@ const createTweetElement = function(tweetData) {
     </footer>
 
   </article>`);
-  
 };
 const renderTweets = function(data) {
   for (let tweetData of data) {
     const $tweet = createTweetElement(tweetData);
-    $('#tweets-container').prepend($tweet);
+    $("#tweets-container").prepend($tweet);
   }
-
 };
 
 $(document).ready(function() {
- 
-  //Send POST request to the server 
+  //Send POST request to the server
 
   const $form = $(".post-tweet");
 
   $form.on("submit", function(event) {
+    hideErrorMess();
     event.preventDefault();
     const $textarea = $("#tweet-text");
-    let tweet_length = $textarea.val().length;
-    const tweet = $(this).serialize()
-    if (tweet_length > 140) {
-      alert("Your tweet is more then 140 symbols");
+    let tweetLength = $textarea.val().length;
+    const tweet = $(this).serialize();
+    if (tweetLength > 140) {
+      $(".error-message-oversize").slideDown({
+        start: function() {
+          $(this).css({
+            display: "flex",
+          });
+        },
+      });
       return;
     }
 
-    if (tweet_length === 0) {
-      alert("Your tweet is empty");
+    if (tweetLength === 0) {
+      $(".error-message-empty").slideDown({
+        start: function() {
+          $(this).css({
+            display: "flex",
+          });
+        },
+      });
       return;
     }
-    
-    $.ajax("/tweets", { method: 'POST', data: tweet })
-      .then(res => {
-        console.log(tweet);
-        $("#tweet-text").val("")        
-        $.ajax("/tweets", {method: "GET"})
-    
-    .then(res => {
-      renderTweets([res.pop()])
-    })
-        
-      })    
-    
-  })
+
+    $.ajax("/tweets", { method: "POST", data: tweet }).then((res) => {
+      $("#tweet-text").val("");
+      $.ajax("/tweets", { method: "GET" })
+        .then((res) => {
+          renderTweets([res.pop()]);
+        });
+    });
+  });
+  
+  const hideErrorMess = function() {
+    $(".error-message-empty").css({
+      display: "none",
+    });
+    $(".error-message-oversize").css({
+      display: "none",
+    });
+
+  };
 
   const loadTweets = function() {
-    $.ajax("/tweets", {method: "GET"})
-    
-    .then(res => {
-      console.log(res)
-      renderTweets(res)
-    })
-    
-  }
+    $.ajax("/tweets", { method: "GET" })
+      .then((res) => {
+        renderTweets(res);
+      });
+  };
 
-
-  
-  console.log(loadTweets())
-  
+  loadTweets();
 });
-
-
-
