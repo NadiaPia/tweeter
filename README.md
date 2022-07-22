@@ -21,7 +21,10 @@ Tweeter is a simple, single-page Twitter clone.
 !["Desktop version - main view"](https://github.com/NadiaPia/tweeter/tree/master/public/images/desktop version.png)
 
 - ### Compose new tweet form
-- #### In the form you can write your tweet up to 140 characters long. The built-in counter will help you plan your message.
+- #### In the form you can write your tweet up to 140 characters long. The built-in counter will help you plan your message - it shows how many characters can still be typed in the current tweet.
+
+!["Mobile version"](https://github.com/NadiaPia/tweeter/blob/master/public/images/counter.png)
+
 
 1. [Create](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template) a new repository using this repository as a template.
 2. Clone your repository onto your local device.
