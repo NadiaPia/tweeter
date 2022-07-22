@@ -93,7 +93,6 @@ $(document).ready(function() {
     $(".error-message-oversize").css({
       display: "none",
     });
-
   };
 
   const loadTweets = function() {

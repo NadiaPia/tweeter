@@ -19,17 +19,12 @@ nav {
   margin-top: 20px;
 }
 
-.avatar-photo {
-  width: 200px;
-}
-
 .pigeon {
   width: 50px;
 }
 
 .new-tweet-button .fa-angles-down {
   position: relative;
-
   align-items: center;
   color: red;
   animation-name: arrow;
@@ -41,15 +36,13 @@ nav {
 
 @keyframes arrow {
   from {top: 0px;}
-  to {top: 20px;}
- 
+  to {top: 20px;} 
 }
 
 .new-tweet-button {
   display: flex;
   flex-direction: column;  
-  align-items: center;
-  
+  align-items: center;  
 }
 
 .new-tweet-button p {

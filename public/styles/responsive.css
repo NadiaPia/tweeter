@@ -1,20 +1,16 @@
 @media only screen and (min-width: 1024px) {
-  body {
-    
+  body {    
     flex-direction: row;
-    /*justify-content: flex-start;*/
     align-items: flex-start;
     padding-top: 200px;
-
   }
-  
+
   .nav-header {    
     width: 50%;
     margin-left: 50px;
     margin-right: 150px;
     padding-top: 0;
-    height: 386px;
-    
+    height: 386px;    
   }
 
   h2 {
@@ -23,7 +19,6 @@
 
   .container {
     margin-right: 3vw;
-
   }
 }
 
