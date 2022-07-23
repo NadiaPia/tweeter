@@ -33,13 +33,16 @@ Tweeter is a simple, single-page Twitter clone.
 !["empty tweet"](https://github.com/NadiaPia/tweeter/blob/master/public/images/empty_tweet.png)
 !["looong tweet"](https://github.com/NadiaPia/tweeter/blob/master/public/images/Looong_tweet.png)
 
-1. [Create](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template) a new repository using this repository as a template.
-2. Clone your repository onto your local device.
-3. Install dependencies using the `npm install` command.
-3. Start the web server using the `npm run local` command. The app will be served at <http://localhost:8080/>.
-4. Go to <http://localhost:8080/> in your browser.
+- ### Features
+
+- #### If mouse is over a tweet it is highlighter with nice shadow, also, the color of the icons on bottom-right corner of this tweet changes on hover. 
+
+!["Shadows-colors"](https://github.com/NadiaPia/tweeter/blob/master/public/images/shadow_color_change.png)
+
 
 ## Dependencies
 
-- Express
-- Node 5.10.x or above
+- body-parser
+- chance
+- express
+- md5
